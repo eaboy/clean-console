@@ -1,0 +1,11 @@
+{
+  "name": "clean-console",
+  "version": "0.1.0",
+  "description": "Lightweight library to keep the browser console clean in your project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Eduardo Aboy de la Cruz",
+  "license": "MIT"
+}
