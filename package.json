@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "lint": "eslint --ext .ts .",
+    "transpile": "tsc",
+    "build": "npm run lint && npm run transpile"
   },
   "author": "Eduardo Aboy de la Cruz",
   "license": "MIT",
@@ -14,8 +16,11 @@
     "@typescript-eslint/parser": "^2.21.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.10.0",
     "eslint-config-typescript": "^3.0.0",
     "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "prettier": "^1.19.1",
     "typescript": "^3.8.3"
   }
 }
