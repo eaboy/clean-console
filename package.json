@@ -9,8 +9,15 @@
     "transpile": "tsc",
     "build": "npm run lint && npm run transpile"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eaboy/clean-console"
+  },
   "author": "Eduardo Aboy de la Cruz",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eaboy/clean-console/issues"
+  },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.21.0",
     "@typescript-eslint/parser": "^2.21.0",
