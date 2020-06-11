@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint --ext .ts .",
+    "lint": "eslint --ext .ts",
     "transpile": "tsc",
-    "build": "npm run lint && npm run transpile"
+    "build": "npm run lint && webpack"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,9 @@
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-prettier": "^3.1.3",
     "prettier": "^2.0.5",
-    "typescript": "^3.9.5"
+    "ts-loader": "^7.0.5",
+    "typescript": "^3.9.5",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
   }
 }
