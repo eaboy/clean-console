@@ -30,12 +30,16 @@ type ConsoleMethods =
   'memory';
 export interface CleanConsoleConfiguration {
   excludeMethods?: ConsoleMethods[],
-  clearOnInit?: boolean
+  clearOnInit?: boolean,
+  debugLocalStoregeKey?: string
 }
 
 export const CleanConsole = {
 
   init: (config: CleanConsoleConfiguration) => {
+    if (config.debugLocalStoregeKey && readLocalStorageKey(config.debugLocalStoregeKey)) {
+      return;
+    }
     if (config.clearOnInit) {
       console.clear();
     }
@@ -52,6 +56,10 @@ function overrideConsoleMethods(methodsToEclude: ConsoleMethods[] = []) {
       ((console as CleanConsoleInterface)[property] as Function) = () => { null; };
     }
   });
+}
+
+function readLocalStorageKey(key: string): boolean {
+  return localStorage.getItem(key) === 'true';
 }
 
 export const init = CleanConsole.init;
