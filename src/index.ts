@@ -28,22 +28,40 @@ type ConsoleMethods =
   'timeStamp' |
   'context' |
   'memory';
+interface InitialMessage {
+  message: string,
+  style?: string
+}
 export interface CleanConsoleConfiguration {
   excludeMethods?: ConsoleMethods[],
   clearOnInit?: boolean,
-  debugLocalStoregeKey?: string
+  debugLocalStoregeKey?: string,
+  initialMessages?: InitialMessage[]
 }
 
 export const CleanConsole = {
 
-  init: (config: CleanConsoleConfiguration) => {
+  init: (config: CleanConsoleConfiguration = {}) => {
     if (config.debugLocalStoregeKey && readLocalStorageKey(config.debugLocalStoregeKey)) {
       return;
     }
     if (config.clearOnInit) {
-      console.clear();
+      setTimeout(console.clear.bind(console));
     }
-    overrideConsoleMethods(config.excludeMethods);
+    if (config.initialMessages) {
+      config.initialMessages?.forEach((initialMessage: InitialMessage) => {
+        if (initialMessage.style) {
+          const message: string = `%c${initialMessage.message}`;
+          setTimeout(console.log.bind(console, message, initialMessage.style));
+        } else {
+          setTimeout(console.log.bind(console, initialMessage.message));
+        }
+
+      });
+    }
+    setTimeout(() => {
+      overrideConsoleMethods(config.excludeMethods);
+    });
   }
 };
 
