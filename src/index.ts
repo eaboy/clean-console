@@ -45,25 +45,34 @@ export const CleanConsole = {
     if (config.debugLocalStoregeKey && readLocalStorageKey(config.debugLocalStoregeKey)) {
       return;
     }
-    if (config.clearOnInit) {
-      setTimeout(console.clear.bind(console));
-    }
-    if (config.initialMessages) {
-      config.initialMessages?.forEach((initialMessage: InitialMessage) => {
-        if (initialMessage.style) {
-          const message: string = `%c${initialMessage.message}`;
-          setTimeout(console.log.bind(console, message, initialMessage.style));
-        } else {
-          setTimeout(console.log.bind(console, initialMessage.message));
-        }
-
-      });
-    }
-    setTimeout(() => {
-      overrideConsoleMethods(config.excludeMethods);
-    });
+    clearOnInit(config);
+    setInitialMessages(config.initialMessages);
+    overrideConsoleMethods(config.excludeMethods);
   }
 };
+
+function readLocalStorageKey(key: string): boolean {
+  return localStorage.getItem(key) === 'true';
+}
+
+function clearOnInit(config: CleanConsoleConfiguration) {
+  if (config.clearOnInit) {
+    setTimeout(console.clear.bind(console));
+  }
+}
+
+function setInitialMessages(initialMessages: InitialMessage[] | undefined) {
+  initialMessages?.forEach((initialMessage: InitialMessage) => {
+    if (initialMessage.style) {
+      const message: string = `%c${initialMessage.message}`;
+      setTimeout(console.log.bind(console, message, initialMessage.style));
+    }
+    else {
+      setTimeout(console.log.bind(console, initialMessage.message));
+    }
+
+  });
+}
 
 function overrideConsoleMethods(methodsToEclude: ConsoleMethods[] = []) {
   const consoleProperties: ConsoleMethods[] = Object.keys(console) as ConsoleMethods[];
@@ -74,10 +83,6 @@ function overrideConsoleMethods(methodsToEclude: ConsoleMethods[] = []) {
       ((console as CleanConsoleInterface)[property] as Function) = () => { null; };
     }
   });
-}
-
-function readLocalStorageKey(key: string): boolean {
-  return localStorage.getItem(key) === 'true';
 }
 
 export const init = CleanConsole.init;
