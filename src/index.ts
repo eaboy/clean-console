@@ -29,13 +29,16 @@ type ConsoleMethods =
   'context' |
   'memory';
 export interface CleanConsoleConfiguration {
-  excludeMethods?: ConsoleMethods[]
+  excludeMethods?: ConsoleMethods[],
+  clearOnInit?: boolean
 }
 
 export const CleanConsole = {
 
   init: (config: CleanConsoleConfiguration) => {
-    console.clear();
+    if (config.clearOnInit) {
+      console.clear();
+    }
     overrideConsoleMethods(config.excludeMethods);
   }
 };
