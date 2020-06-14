@@ -3,18 +3,49 @@
 interface CleanConsoleInterface extends Console {
   [key: string]: Function;
 }
+type ConsoleMethods =
+  'debug' |
+  'error' |
+  'info' |
+  'log' |
+  'warn' |
+  'dir' |
+  'dirxml' |
+  'table' |
+  'trace' |
+  'group' |
+  'groupCollapsed' |
+  'groupEnd' |
+  'clear' |
+  'count' |
+  'countReset' |
+  'assert' |
+  'profile' |
+  'profileEnd' |
+  'time' |
+  'timeLog' |
+  'timeEnd' |
+  'timeStamp' |
+  'context' |
+  'memory';
+export interface CleanConsoleConfiguration {
+  excludeMethods?: ConsoleMethods[]
+}
+
 export const CleanConsole = {
 
-  init: () => {
+  init: (config: CleanConsoleConfiguration) => {
     console.clear();
-    overrideConsoleMethods();
+    overrideConsoleMethods(config.excludeMethods);
   }
 };
 
-function overrideConsoleMethods() {
-  const consoleProperties: string[] = Object.keys(console);
-  consoleProperties.forEach((property: string) => {
-    if (typeof (console as CleanConsoleInterface)[property] === 'function') {
+function overrideConsoleMethods(methodsToEclude: ConsoleMethods[] = []) {
+  const consoleProperties: ConsoleMethods[] = Object.keys(console) as ConsoleMethods[];
+  consoleProperties.forEach((property: ConsoleMethods) => {
+    const isTypeFunction: boolean = typeof (console as CleanConsoleInterface)[property] === 'function';
+    const isNotExcluded: boolean = !methodsToEclude.includes(property);
+    if (isTypeFunction && isNotExcluded) {
       ((console as CleanConsoleInterface)[property] as Function) = () => { null; };
     }
   });
