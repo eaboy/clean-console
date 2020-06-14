@@ -78,7 +78,7 @@ function overrideConsoleMethods(methodsToEclude: ConsoleMethods[] = []) {
   const consoleProperties: ConsoleMethods[] = Object.keys(console) as ConsoleMethods[];
   consoleProperties.forEach((property: ConsoleMethods) => {
     const isTypeFunction: boolean = typeof (console as CleanConsoleInterface)[property] === 'function';
-    const isNotExcluded: boolean = !methodsToEclude.includes(property);
+    const isNotExcluded: boolean = methodsToEclude.indexOf(property) === -1;
     if (isTypeFunction && isNotExcluded) {
       ((console as CleanConsoleInterface)[property] as Function) = () => { null; };
     }
