@@ -3,19 +3,21 @@
 interface CleanConsoleInterface extends Console {
   [key: string]: Function;
 }
-class CleanConsole {
-  constructor() {
-    this.overrideConsoleMethods();
-  }
+export const CleanConsole = {
 
-  private overrideConsoleMethods = () => {
-    const consoleProperties: string[] = Object.keys(console);
-    consoleProperties.forEach(property => {
-      if (typeof (console as CleanConsoleInterface)[property] === 'function') {
-        ((console as CleanConsoleInterface)[property] as Function) = () => {};
-      }
-    });
-  };
+  init: () => {
+    console.clear();
+    overrideConsoleMethods();
+  }
+};
+
+function overrideConsoleMethods() {
+  const consoleProperties: string[] = Object.keys(console);
+  consoleProperties.forEach((property: string) => {
+    if (typeof (console as CleanConsoleInterface)[property] === 'function') {
+      ((console as CleanConsoleInterface)[property] as Function) = () => { null; };
+    }
+  });
 }
 
-export default new CleanConsole();
+export const init = CleanConsole.init;
