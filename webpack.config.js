@@ -18,7 +18,8 @@ const config = {
     filename: 'clean-console.js',
     path: path.resolve(__dirname),
     library: 'cleanConsole',
-    libraryTarget: 'var'
+    libraryTarget: 'umd',
+    umdNamedDefine: true
   },
 };
 
