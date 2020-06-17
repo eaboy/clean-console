@@ -4,7 +4,7 @@
     "module": "commonjs",
     "declaration": true,
     "rootDir": "src",
-    "outDir": "./lib",
+    "outDir": "./",
     "strict": true,
     "sourceMap": true
   },

@@ -1,2 +1,4 @@
 node_modules/
-lib/
+index.d.ts
+clean-console.min.js
+clean-console.js

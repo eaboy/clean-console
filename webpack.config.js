@@ -16,7 +16,7 @@ const config = {
   },
   output: {
     filename: 'clean-console.js',
-    path: path.resolve(__dirname, 'lib'),
+    path: path.resolve(__dirname),
     library: 'cleanConsole',
     libraryTarget: 'var'
   },
