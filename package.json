@@ -1,13 +1,15 @@
 {
   "name": "clean-console",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Lightweight library to keep the browser console clean in your project.",
-  "main": "index.js",
+  "main": "src/index.ts",
+  "types": "lib/clean-console.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint --ext .ts",
     "transpile": "tsc",
-    "build": "npm run lint && webpack"
+    "build": "npm run lint && webpack --mode=development",
+    "prepublish": "npm run lint && webpack --mode=production"
   },
   "repository": {
     "type": "git",
