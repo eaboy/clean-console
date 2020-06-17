@@ -39,7 +39,7 @@ export interface CleanConsoleConfiguration {
   initialMessages?: InitialMessage[]
 }
 
-const CleanConsole = {
+export const CleanConsole = {
 
   init: (config: CleanConsoleConfiguration = {}) => {
     if (config.debugLocalStoregeKey && readLocalStorageKey(config.debugLocalStoregeKey)) {
@@ -85,5 +85,4 @@ function overrideConsoleMethods(methodsToEclude: ConsoleMethods[] = []) {
   });
 }
 
-export default CleanConsole;
 export const init = CleanConsole.init;

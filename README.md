@@ -20,7 +20,7 @@ npm i @eaboy/clean-console
 Default usage:
 
 ```js
-import CleanConsole from '@eaboy/clean-console';
+import { CleanConsole } from '@eaboy/clean-console';
 
 CleanConsole.init() // Dafault behavior
 ```
@@ -28,7 +28,7 @@ CleanConsole.init() // Dafault behavior
 Custom usage:
 
 ```js
-import CleanConsole from '@eaboy/clean-console';
+import { CleanConsole } from '@eaboy/clean-console';
 
 CleanConsole.init(configOptions) // Object parameter for coustom options
 ```
