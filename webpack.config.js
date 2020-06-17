@@ -15,7 +15,7 @@ const config = {
     extensions: ['.ts'],
   },
   output: {
-    filename: 'cleanconsole.js',
+    filename: 'clean-console.js',
     path: path.resolve(__dirname, 'lib'),
     library: 'cleanConsole',
     libraryTarget: 'var'
@@ -27,7 +27,7 @@ module.exports = (env, argv) => {
     config.devtool = 'inline-source-map';
   }
   if (argv.mode === 'production') {
-    config.output.filename = 'cleanconsole.min.js'
+    config.output.filename = 'clean-console.min.js'
   }
   return config;
 };

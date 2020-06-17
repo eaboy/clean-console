@@ -1,4 +1,4 @@
-# cleanconsole
+# clean-console
 
 A simple library to keep the console of your site or app clean. No more logs, errors, warnings, etc. printed on the console and visible to everybody.
 You can also show fancy messages to your curious visitors.
@@ -12,7 +12,7 @@ And if you want to see the logs for debugging, you can just set a local storage 
 ## install 
 
 ```
-npm i cleanconsole
+npm i @eaboy/clean-console
 ```
 
 ## usage
@@ -20,7 +20,7 @@ npm i cleanconsole
 Default usage:
 
 ```js
-import CleanConsole from 'cleanconsole';
+import CleanConsole from 'clean-console';
 
 CleanConsole.init() // Dafault behavior
 ```
@@ -28,12 +28,12 @@ CleanConsole.init() // Dafault behavior
 Custom usage:
 
 ```js
-import CleanConsole from 'cleanconsole';
+import CleanConsole from 'clean-console';
 
 CleanConsole.init(configOptions) // Object parameter for coustom options
 ```
 
-You can also load directly cleanconsole.min.js in your page and call the init method in your code:
+You can also load directly clean-console.min.js in your page and call the init method in your code:
 
 ```js
 cleanConsole.init(configOptions) // Object parameter for coustom options
