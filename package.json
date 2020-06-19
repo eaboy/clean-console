@@ -1,7 +1,14 @@
 {
   "name": "@eaboy/clean-console",
-  "version": "1.0.3",
-  "description": "Lightweight library to keep the browser console clean in your project.",
+  "version": "1.0.4",
+  "description": "A simple library to keep the console of your site or app clean ",
+  "keywords": [
+    "javascript",
+    "javascript-library",
+    "browser",
+    "console",
+    "console-log"
+  ],
   "main": "clean-console.min.js",
   "types": "index.d.ts",
   "scripts": {
